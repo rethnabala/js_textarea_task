@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            home
+        </title>
+    </head>
+    <body>
+
+        <textarea id="random" placeholder="enter your text" rows="50" cols="50"></textarea>
+        <input type="button" value="submit" onclick="validateForm()"/>
+    </body>
+    <script>
+        function validateForm(){
+            let dummyArray=[];
+            let phoneArray=[];
+            let webArray=[];
+            let newString=document.getElementById('random').value;
+            let emailPattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let phonePattern=/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+            let urlPattern=/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+            let splitString=newString.split(' ');
+            let result="";
+            let count=0;
+            for(let index=0;index<splitString.length;index++){
+            if(emailPattern.test(splitString[index]) == true){
+                if(dummyArray.indexOf(splitString[index]) == -1){
+                dummyArray.push(splitString[index])
+            }
+        }
+        
+            if(phonePattern.test(splitString[index]) == true){
+                if(phoneArray.indexOf(splitString[index]) == -1){
+                    phoneArray.push(splitString[index]);
+            }
+        }
+            if(urlPattern.test(splitString[index])== true){
+                if(webArray.indexOf(splitString[index]) == -1){
+                    webArray.push(splitString[index]);
+            }
+                }
+                
+            }
+            
+        
+         
+        
+        console.log('---------dup val removed---------',dummyArray);
+          console.log('-----------num-------',phoneArray);
+          console.log('-------weburl----',webArray);
+    
+}
+        
+    </script>
+</html>
